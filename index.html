@@ -17,14 +17,34 @@
             font-family: 'Vazirmatn', 'Tahoma', sans-serif;
         }
 
-        body {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+body {
+    min-height: 100vh;
+    background: linear-gradient(
+        270deg,
+        #ff7777,    /* قرمز */
+        #ffbc78,    /* نارنجی */
+        #ffff7a,    /* زرد */
+        #7cff7c,    /* سبز */
+        #7bfdfd,    /* فیروزه‌ای */
+        #7b7bff,    /* آبی */
+        #c47bff,    /* بنفش */
+        #ff78ff,    /* صورتی */
+        #ff7b7b     /* برگشت به قرمز */
+    );
+    background-size: 800% 800%;
+    animation: rgbBackground 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 0;
+}
+
+@keyframes rgbBackground {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
         body::before {
             content: '';
@@ -307,6 +327,13 @@
                     </span>
                 </a>
             </div>
+
+            <!-- 💬 دیسکورد -->
+            <a href="https://discord.gg/YOUR_INVITE" target="_blank" rel="noopener noreferrer" class="social-btn discord">
+                <i class="fab fa-discord"></i>
+                دیسکورد
+            </a>
+
         </div>
 
         <div class="footer">
