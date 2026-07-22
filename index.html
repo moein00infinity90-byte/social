@@ -1,87 +1,175 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>صفحه شخصی من</title>
-  <style>
-    /* استایل‌های ظاهری */
-    body {
-      margin: 0;
-      font-family: 'Tahoma', sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* پس‌زمینه رنگی */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      color: #333;
-    }
-    .card {
-      background: white;
-      width: 90%;
-      max-width: 400px;
-      padding: 30px;
-      border-radius: 25px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-      text-align: center;
-    }
-    /* استایل عکس پروفایل */
-    .profile-img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%; /* گرد کردن عکس */
-      object-fit: cover; /* جلوگیری از کشیدگی عکس */
-      border: 4px solid #764ba2;
-      margin-bottom: 15px;
-    }
-    h1 { margin: 10px 0; font-size: 24px; }
-    p { color: #777; font-size: 14px; margin-bottom: 25px; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه شخصی من</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+        }
 
-    .links { display: flex; flex-direction: column; gap: 15px; }
-    
-    /* استایل دکمه‌ها */
-    .btn {
-      text-decoration: none;
-      color: white;
-      padding: 12px;
-      border-radius: 10px;
-      font-weight: bold;
-      transition: transform 0.3s ease;
-    }
-    .btn:hover { transform: scale(1.05); }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
 
-    /* رنگ‌های شخصی برای دکمه‌ها */
-    .instagram { background: #E1306C; }
-    .youtube   { background: #FF0000; }
-    .telegram  { background: #0088cc; }
-    .discord   { background: #5865F2; }
-  </style>
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px 30px;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #fff;
+            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.4);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05) rotate(3deg);
+        }
+
+        h1 {
+            color: #2d3748;
+            font-size: 26px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .username {
+            color: #764ba2;
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .description {
+            color: #4a5568;
+            font-size: 14px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, #ff4081 0%, #ff1744 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(255, 23, 68, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .social-btn:hover::before {
+            left: 100%;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(255, 23, 68, 0.5);
+        }
+
+        .social-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #a0aec0;
+            font-size: 12px;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            h1 { font-size: 22px; }
+            .avatar { width: 110px; height: 110px; }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <img src="./avatar.png" alt="آواتار" class="avatar" onerror="this.src='https://via.placeholder.com/130/764ba2/ffffff?text=M'">
+        
+        <h1>صفحه شخصی من</h1>
+        <p class="username">@Moein00Infinity</p>
+        <p class="description">خوش آمدید به صفحه شبکه‌های اجتماعی من</p>
 
-  <div class="card">
-    <!-- ۱. بخش عکس پروفایل -->
-    <img src="./avatar.png" alt="Profile Picture" class="profile-img">
+        <div class="social-links">
+            <a href="https://rubika.ir/MoInfinity" target="_blank" rel="noopener noreferrer" class="social-btn">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                </svg>
+                روبیکا
+            </a>
+        </div>
 
-    <!-- ۲. بخش نام و توضیحات -->
-    <h1>Moein00Infinity</h1>
-    <p>خوش آمدید به صفحه شبکه های اجتماعی من</p>
-
-    <!-- ۳. بخش لینک‌ها -->
-    <div class="links">
-      <!-- لینک اینستاگرام -->
-      <a href="https://instagram.com/YOUR_USERNAME" class="btn instagram" target="_blank">اینستاگرام</a>
-      
-      <!-- لینک یوتیوب -->
-      <a href="https://youtube.com/YOUR_CHANNEL" class="btn youtube" target="_blank">یوتیوب</a>
-
-      <!-- لینک تلگرام -->
-      <a href="https://t.me/YOUR_USERNAME" class="btn telegram" target="_blank">تلگرام</a>
-
-      <!-- لینک دیسکورد -->
-      <a href="https://discord.gg/YOUR_INVITE" class="btn discord" target="_blank">دیسکورد</a>
+        <div class="footer">
+            © 2026 Moein00Infinity
+        </div>
     </div>
-  </div>
-
 </body>
 </html>
