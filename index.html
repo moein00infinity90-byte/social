@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحه شخصی من</title>
+    <title>Moein00Infinity social</title>
+    <link rel="icon" type="image/png" href="./favicon-96x96.png">
+    
+    <!-- 🔥 Font Awesome برای آیکون‌ها -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
         * {
             margin: 0;
@@ -19,7 +24,6 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            overflow-x: hidden;
         }
 
         body::before {
@@ -93,20 +97,19 @@
             gap: 12px;
         }
 
+        /* دکمه‌های ساده */
         .social-btn {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
             padding: 14px 20px;
-            background: linear-gradient(135deg, #ff4081 0%, #ff1744 100%);
             color: white;
             text-decoration: none;
             border-radius: 15px;
             font-size: 16px;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(255, 23, 68, 0.3);
             position: relative;
             overflow: hidden;
         }
@@ -126,14 +129,126 @@
 
         .social-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(255, 23, 68, 0.5);
         }
 
-        .social-btn svg {
-            width: 24px;
-            height: 24px;
-            fill: white;
+        .social-btn i {
+            font-size: 24px;
         }
+
+        /* ===== دکمه ترکیبی (پروفایل + استریم) ===== */
+        .social-btn-combo {
+            display: flex;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-btn-combo:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .combo-profile,
+        .combo-stream {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 12px;
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .combo-profile {
+            background: linear-gradient(135deg, #ea1d5d 0%, #c4144a 100%);
+        }
+
+        .combo-stream {
+            background: linear-gradient(135deg, #ff4081 0%, #ff1744 100%);
+            border-right: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .combo-profile:hover,
+        .combo-stream:hover {
+            filter: brightness(1.15);
+        }
+
+        .combo-profile i,
+        .combo-stream i {
+            font-size: 22px;
+        }
+
+        /* نشانگر LIVE */
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 700;
+            margin-right: 4px;
+        }
+
+        .live-dot {
+            width: 7px;
+            height: 7px;
+            background: #fff;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        /* رنگ‌های مخصوص هر شبکه اجتماعی */
+        .rubika { 
+            background: linear-gradient(135deg, #7eff28 0%, #177cff 50%,  #ff1717 100%);
+            box-shadow: 0 8px 20px rgba(255, 23, 68, 0.3);
+        }
+        .rubika:hover { box-shadow: 0 12px 25px rgba(255, 23, 68, 0.5); }
+
+        .discord {
+            background: linear-gradient(135deg, #5865F2 0%, #4752c4 100%);
+            box-shadow: 0 8px 20px rgba(88, 101, 242, 0.3);
+        }
+        .discord:hover { box-shadow: 0 12px 25px rgba(88, 101, 242, 0.5); }
+
+        .rgb-animated {
+    background: linear-gradient(
+        270deg,
+        #ff0000,    /* قرمز */
+        #ff7f00,    /* نارنجی */
+        #ffff00,    /* زرد */
+        #00ff00,    /* سبز */
+        #0000ff,    /* آبی */
+        #4b0082,    /* نیلی */
+        #9400d3,    /* بنفش */
+        #ff0000     /* برگشت به قرمز */
+    );
+    background-size: 400% 400%;
+    animation: rgbFlow 6s ease infinite;
+    box-shadow: 0 8px 20px rgba(255, 0, 128, 0.4);
+}
+
+.rgb-animated:hover {
+    animation-duration: 2s; /* هنگام هاور سریع‌تر می‌شود */
+}
+
+@keyframes rgbFlow {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
         .footer {
             margin-top: 30px;
@@ -142,11 +257,23 @@
         }
 
         @media (max-width: 480px) {
-            .container {
-                padding: 30px 20px;
-            }
+            .container { padding: 30px 20px; }
             h1 { font-size: 22px; }
             .avatar { width: 110px; height: 110px; }
+            .combo-profile,
+            .combo-stream {
+                font-size: 13px;
+                padding: 12px 8px;
+                gap: 5px;
+            }
+            .combo-profile i,
+            .combo-stream i {
+                font-size: 18px;
+            }
+            .live-badge {
+                font-size: 9px;
+                padding: 2px 6px;
+            }
         }
     </style>
 </head>
@@ -154,17 +281,39 @@
     <div class="container">
         <img src="./avatar.png" alt="آواتار" class="avatar" onerror="this.src='https://via.placeholder.com/130/764ba2/ffffff?text=M'">
         
-        <h1>صفحه شخصی من</h1>
-        <p class="username">@Moein00Infinity</p>
-        <p class="description">خوش آمدید به صفحه شبکه‌های اجتماعی من</p>
+        <h1>Moein00Infinity social</h1>
+        <p class="description">خوش آمدید به صفحه شبکه‌های اجتماعی Moein</p>
 
         <div class="social-links">
-            <a href="https://rubika.ir/MoInfinity" target="_blank" rel="noopener noreferrer" class="social-btn">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
-                </svg>
+            
+            <!-- 🎲 روبیکا -->
+            <a href="https://rubika.ir/MoInfinity" target="_blank" rel="noopener noreferrer" class="social-btn rgb-animated">
+                <i class="fas fa-cube"></i>
                 روبیکا
             </a>
+
+            <!-- 🎬 آپارات (ترکیبی: پروفایل + استریم) -->
+            <div class="social-btn-combo">
+                <a href="https://www.aparat.com/moein00infinity" target="_blank" rel="noopener noreferrer" class="combo-profile">
+                    <i class="fas fa-video"></i>
+                    <span>آپارات</span>
+                </a>
+                <a href="https://www.aparat.com/moein00infinity/live" target="_blank" rel="noopener noreferrer" class="combo-stream">
+                    <i class="fas fa-broadcast-tower"></i>
+                    <span>استریم</span>
+                    <span class="live-badge">
+                        <span class="live-dot"></span>
+                        LIVE
+                    </span>
+                </a>
+            </div>
+
+            <!-- 💬 دیسکورد -->
+            <a href="https://discord.gg/YOUR_INVITE" target="_blank" rel="noopener noreferrer" class="social-btn discord">
+                <i class="fab fa-discord"></i>
+                دیسکورد
+            </a>
+
         </div>
 
         <div class="footer">
